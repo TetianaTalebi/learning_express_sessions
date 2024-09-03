@@ -29,6 +29,11 @@ app.get('/register', (req, res) =>{
     res.redirect('/greet');
 })
 
+app.get('/greet', (req, res) => {
+    const {username} = req.session;
+    res.send(`Welcome back ${username}!!!`)
+})
+
 
 app.listen(3000, ()=>{
     console.log("Listening on port 3000 !!!");
