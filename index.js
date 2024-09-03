@@ -5,7 +5,12 @@ const app = express();
 
 // Create an object with the secret string for session
 // We keep the secret string in index.js only for demo purposes!!!
-app.use(session({secret: 'notagoodsecret'}));
+app.use(session({
+    secret: 'notagoodsecret', 
+    resave: false,
+    saveUninitialized: true}));
+
+
 
 
 app.listen(3000, ()=>{
