@@ -10,7 +10,15 @@ app.use(session({
     resave: false,
     saveUninitialized: true}));
 
-
+app.get('/viewcount', (req, res)=>{
+    if (req.session.count){
+        req.session.count+=1;
+    } else {
+        req.session.count = 1;
+    }
+    // console.log(req.session);
+    res.send(`You have viewed this page ${req.session.count} times`);
+})
 
 
 app.listen(3000, ()=>{
