@@ -22,6 +22,13 @@ app.get('/viewcount', (req, res)=>{
     res.send(`You have viewed this page ${req.session.count} times`);
 })
 
+app.get('/register', (req, res) =>{
+    const {username = 'noname'} = req.query;
+    req.session.username = username;
+    console.log(req.session);
+    res.redirect('/greet');
+})
+
 
 app.listen(3000, ()=>{
     console.log("Listening on port 3000 !!!");
