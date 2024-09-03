@@ -5,10 +5,12 @@ const app = express();
 
 // Create an object with the secret string for session
 // We keep the secret string in index.js only for demo purposes!!!
-app.use(session({
+const sessionOptions = {
     secret: 'notagoodsecret', 
     resave: false,
-    saveUninitialized: true}));
+    saveUninitialized: true};
+
+app.use(session(sessionOptions));
 
 app.get('/viewcount', (req, res)=>{
     if (req.session.count){
